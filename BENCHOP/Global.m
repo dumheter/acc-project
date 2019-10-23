@@ -10,11 +10,24 @@ Methods={'MC','MC-S','QMC-S','MLMC','MLMC-A',...
     'RBF','RBF-FD','RBF-PUM','RBF-LSML','RBF-AD','RBF-MLT'};
 
 rootpath=pwd;
+
+%Standard Params for 1 a) I
 S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
 U=[2.758443856146076 7.485087593912603 14.702019669720769];
 
 result_1_a = standard_1_a(Methods, rootpath, S, K, T, r, sig, U);
+
+%Standard Params for 1 b) I
+S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
+U=[10.726486710094511 4.820608184813253 1.828207584020458];
+
 result_1_b = standard_1_b(Methods, rootpath, S, K, T, r, sig, U);
+
+%Standard Params for 1 c) I
+S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15; B=1.25*K;
+U=[1.822512255945242 3.294086516281595 3.221591131246868];
+result_1_c = standard_1_c(Methods, rootpath, S, K, T, r, sig, B, U);
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
