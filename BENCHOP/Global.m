@@ -26,9 +26,14 @@ result_1_b = standard_1_b(Methods, rootpath, S, K, T, r, sig, U);
 %Standard Params for 1 c) I
 S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15; B=1.25*K;
 U=[1.822512255945242 3.294086516281595 3.221591131246868];
+
 result_1_c = standard_1_c(Methods, rootpath, S, K, T, r, sig, B, U);
 
+%Standard Params for 1 a) II
+S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100;
+U=[0.033913177006141   0.512978189232598   1.469203342553328];
 
+result_1_a_II = standard_1_a_II(Methods, rootpath, S, K, T, r, sig, U);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Table2=table(result_1_a(0),tBSamPutUI,tBSupoutCallI,tBSeuCallUII,tBSamPutUII,tBSupoutCallII,'RowNames',Methods)
