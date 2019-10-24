@@ -7,8 +7,14 @@ import tasks
 app = Flask(__name__)
 
 
+@app.route('/benchop/table', methods=['GET'])
+def benchop_table():
+    result = tasks.table.delay().get(timeout=30)
+    return result
+
+
 @app.route('/benchop/ls', methods=['GET'])
-def query_phrase():
+def benchop_ls():
     args = ""
     try:
         args = request.args.get("args")
@@ -16,9 +22,8 @@ def query_phrase():
             args = "-lah"
     except:
         args = "-lah"
-
-    result = tasks.test.delay(args).get(timeout=10)
-
+        
+    result = tasks.test.delay(args).get(timeout=30)
     return result
 
 
