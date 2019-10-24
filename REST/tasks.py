@@ -1,23 +1,27 @@
-import os
 from celery import Celery
 import subprocess
 
 
 app = Celery('tasks', backend='rpc://', broker='amqp://localhost')
+problems_commands = ["1a", "1aII", "1b", "1bII", "1c", "1cII"]
+problems_filenames = ["problem1a.m", "problem1aII.m", "problem1b.m", "problem1bII.m", "problem1c.m", "problem1cII.m"]
+
+
+def list_problems():
+    result = ""
+    for command in problems_commands:
+        result += command + '\n'
+    return result
 
 
 @app.task
-def table():
+def problem(command):
     cmd = "octave"
-    args = "Table.m"
     workdir = "../BENCHOP"
-    result = subprocess.run([cmd, args], stdout=subprocess.PIPE, cwd=workdir)
-    return result.stdout.decode()
+    for i in range(0, len(problems_commands)):
+        if problems_commands[i] == command:
+            args = problems_filenames[i]
+            result = subprocess.run([cmd, args], stdout=subprocess.PIPE, cwd=workdir)
+            return result.stdout.decode()
 
-
-@app.task
-def test(args):
-    cmd = "ls"
-    workdir = "../BENCHOP"
-    result = subprocess.run([cmd, args], stdout=subprocess.PIPE, cwd=workdir)
-    return result.stdout.decode()
+    return "Command {} not found, available commands are:\n{}".format(problem, list_problems)

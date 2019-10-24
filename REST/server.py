@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, request
 import subprocess
 import sys
 import tasks
@@ -7,24 +7,31 @@ import tasks
 app = Flask(__name__)
 
 
-@app.route('/benchop/table', methods=['GET'])
-def benchop_table():
-    result = tasks.table.delay().get(timeout=30)
+@app.route('/benchop/run', methods=['GET'])
+def benchop_run():
+    problem = ""
+    try:
+        problem = request.args.get("problem")
+        if problem == None:
+            err_msg =  "No problem specified, specify a prolem by adding '?problem=...'.\n"
+            err_msg += "Available commands are:\n"
+            err_msg += tasks.list_problems()
+            return err_msg
+    except:
+        return "Failed to process request. Did you forget to specify a problem via '?problem=...'.\n"
+
+    print("problem: {}".format(problem))
+    result = ""
+    try:
+        result = tasks.problem.delay(problem).get(timeout=60)
+    except:
+        result = "Problem {} took to long to run.\n".format(problem)
     return result
 
 
 @app.route('/benchop/ls', methods=['GET'])
 def benchop_ls():
-    args = ""
-    try:
-        args = request.args.get("args")
-        if args == None:
-            args = "-lah"
-    except:
-        args = "-lah"
-        
-    result = tasks.test.delay(args).get(timeout=30)
-    return result
+    return "Available problems are:\n{}".format(tasks.list_problems())
 
 
 if __name__ == '__main__':
