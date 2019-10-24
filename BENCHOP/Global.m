@@ -43,31 +43,31 @@ result_1_b_II = standard_1_b_II(Methods, rootpath, S, K, T, r, sig, U);
 %Standard Params for 1 c) II
 S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100; B=1.25*K;
 U=[0.033913177006134   0.512978189232598   1.469203342553328];
-result_1_c_II = standard_1_c_II(Methods, roothpath, S, K, T, r, sig, B, U);
+result_1_c_II = standard_1_c_II(Methods, rootpath, S, K, T, r, sig, B, U);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Table2=table(result_1_a(0),tBSamPutUI,tBSupoutCallI,tBSeuCallUII,tBSamPutUII,tBSupoutCallII,'RowNames',Methods)
-%err=[rBSeuCallUI,rBSamPutUI,rBSupoutCallI,rBSeuCallUII,rBSamPutUII,rBSupoutCallII];
-%err=round(log10(err));
+Table2=table(result_1_a(1), result_1_b(1), result_1_c(1), result_1_a_II(1),result_1_b_II(1),result_1_c_II(1),'RowNames',Methods)
+err=[result_1_a(2),result_1_b(2),result_1_c(2),result_1_a_II(2),result_1_b_II(2),result_1_c_II(2)];
+err=round(log10(err));
 
 % Now use this table as input in our input struct:
-%input.data = Table2;
-%input.error = err;
+input.data = Table2;
+input.error = err;
 
 % Set the row format of the data values (in this example we want to use
 % integers only):
-%input.dataFormat = {'%.1e'};
+input.dataFormat = {'%.1e'};
 
 % Switch transposing/pivoting your table:
-%input.transposeTable = 1;
+input.transposeTable = 1;
 
 % Column alignment ('l'=left-justified, 'c'=centered,'r'=right-justified):
-%input.tableColumnAlignment = 'c';
+input.tableColumnAlignment = 'c';
 
 % Switch table borders on/off:
-%input.tableBorders = 0;
+input.tableBorders = 0;
 
 % Switch to generate a complete LaTex document or just a table:
-%input.makeCompleteLatexDocument = 0;
+input.makeCompleteLatexDocument = 0;
 
-%latex = latexTable(input);
+latex = latexTable(input);
