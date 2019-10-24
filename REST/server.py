@@ -2,27 +2,25 @@ from flask import Flask, jsonify, request
 import subprocess
 import sys
 import tasks
-import json
 
 
 app = Flask(__name__)
 
 
-@app.route('/benchop/query', methods=['GET'])
+@app.route('/benchop/ls', methods=['GET'])
 def query_phrase():
-    problems = ""
+    args = ""
     try:
-        problems = request.args.get("problems")
+        args = request.args.get("args")
+        if args == None:
+            args = "-lah"
     except:
-        problems = "1"
-    problem_list = pronouns.split(",")
+        args = "-lah"
 
-    # TODO
-    #... = tasks.task1.delay(keywords).get(timeout=10)
+    result = tasks.test.delay(args).get(timeout=10)
 
-    # TODO response
-    #return ...
+    return result
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=1337,debug=True, use_reloader=False)
+    app.run(host='0.0.0.0',port=4567,debug=True, use_reloader=False)
