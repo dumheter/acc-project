@@ -1,4 +1,4 @@
-function [tBSupoutCallII, rBSupoutCallII] = standard_1_c_II(Methods, rootpath, S, K, T, r, sig, B, U)
+function output = standard_1_c_II(Methods, rootpath, S, K, T, r, sig, B, U)
 filepathsBSupoutCallII=getfilenames('./','BSupoutCallII_*.m');
 par={S,K,T,r,sig,B};
 [timeBSupoutCallII,relerrBSupoutCallII] = executor(rootpath,filepathsBSupoutCallII,U,par)
@@ -15,5 +15,6 @@ for ii=1:numel(Methods)
     end
 end
 
+output = [tBSupoutCallII, rBSupoutCallII];
 cd(rootpath);
 end

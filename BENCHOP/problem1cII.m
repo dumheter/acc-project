@@ -15,4 +15,4 @@ rootpath=pwd;
 S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100; B=1.25*K;
 U=[0.033913177006134   0.512978189232598   1.469203342553328];
 
-result_1_c_II = standard_1_c_II(Methods, roothpath, S, K, T, r, sig, B, U)
+result_1_c_II = standard_1_c_II(Methods, rootpath, S, K, T, r, sig, B, U)

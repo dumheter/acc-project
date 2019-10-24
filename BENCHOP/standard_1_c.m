@@ -1,4 +1,4 @@
-function [tBSupoutCallI, rBSupoutCallI] = standard_1_c(Methods, rootpath, S, K, T, r, sig, B, U)
+function output = standard_1_c(Methods, rootpath, S, K, T, r, sig, B, U)
 fprintf('Problem 1 c) I');
 
 filepathsBSupoutCallI=getfilenames('./','BSupoutCallI_*.m');
@@ -16,6 +16,6 @@ for ii=1:numel(Methods)
         end
     end
 end
-
+output = [tBSupoutCallI, rBSupoutCallI];
 cd(rootpath);
 end

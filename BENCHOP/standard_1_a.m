@@ -1,4 +1,4 @@
-function [tBSeuCallUI, rBSeuCallUI] = standard_1_a(Methods, rootpath, S, K, T, r, sig, U)
+function output = standard_1_a(Methods, rootpath, S, K, T, r, sig, U)
 %STARDARD_1_a Solves the problem of 1 a
 % Problem 1 a) I
 %   Detailed explanation goes here
@@ -21,6 +21,8 @@ for ii=1:numel(Methods)
         end
     end
 end
+
+output = [tBSeuCallUI, rBSeuCallUI];
 
 cd(rootpath);
 

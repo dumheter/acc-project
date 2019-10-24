@@ -1,4 +1,4 @@
-function [tBSamPutUII, rBSamPutUII] = standard_1_b_II(Methods, rootpath, S, K, T, r, sig, U)
+function output = standard_1_b_II(Methods, rootpath, S, K, T, r, sig, U)
 filepathsBSamPutUII=getfilenames('./','BSamPutUII_*.m');
 par={S,K,T,r,sig};
 [timeBSamPutUII,relerrBSamPutUII] = executor(rootpath,filepathsBSamPutUII,U,par)
@@ -14,6 +14,8 @@ for ii=1:numel(Methods)
         end
     end
 end
+
+output = [tBSamPutUII, rBSamPutUII];
 
 cd(rootpath);
 end

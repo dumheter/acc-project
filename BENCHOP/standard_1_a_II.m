@@ -1,4 +1,4 @@
-function [tBSeuCallUII, rBSeuCallUII] = standard_1_a_II(Methods, rootpath, S, K, T, r, sig, U)
+function output = standard_1_a_II(Methods, rootpath, S, K, T, r, sig, U)
 fprintf('Problem 1 a) II');
 filepathsBSeuCallUII=getfilenames('./','BSeuCallUII_*.m');
 par={S,K,T,r,sig};
@@ -15,6 +15,7 @@ for ii=1:numel(Methods)
         end
     end
 end
+output = [tBSeuCallUII, rBSeuCallUII];
 
 cd(rootpath);
 end

@@ -1,4 +1,4 @@
-function [tBSamPutUI, rBSamPutUI] = standard_1_b (Methods, rootpath, S, K, T, r, sig, U)
+function output = standard_1_b (Methods, rootpath, S, K, T, r, sig, U)
 % Problem 1 b) I
 
 fprintf('Problem 1 b) I');
@@ -17,6 +17,8 @@ for ii=1:numel(Methods)
         end
     end
 end
+
+output = [tBSamPutUI, rBSamPutUI];
 
 cd(rootpath);
 end
