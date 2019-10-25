@@ -3,8 +3,8 @@ import subprocess
 
 
 app = Celery('tasks', backend='rpc://', broker='amqp://localhost')
-problems_commands = ["1a", "1aII", "1b", "1bII", "1c", "1cII"]
-problems_filenames = ["problem1a.m", "problem1aII.m", "problem1b.m", "problem1bII.m", "problem1c.m", "problem1cII.m"]
+problems_commands = ["all", "1a", "1aII", "1b", "1bII", "1c", "1cII"]
+problems_filenames = ["Global.m", "problem1a.m", "problem1aII.m", "problem1b.m", "problem1bII.m", "problem1c.m", "problem1cII.m"]
 
 
 def list_problems():
