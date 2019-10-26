@@ -1,0 +1,13 @@
+Once the celery worker and flask runs successfully in instance:
+To view results:
+
+For windows OS,
+Open command prompt (cmd) with Administrator privileges and run the below command
+
+curl -i http://<your-instance-floatingIP>:4567/benchop/run?problem=1a
+
+The below command will display all available test problems that can be run by celery workers:
+
+curl -i http://<your-instance-floatingIP>:4567/benchop/ls
+
+
