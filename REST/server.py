@@ -13,7 +13,7 @@ results = []
 def benchop_status():
     global results
     if len(results) == 0:
-        return "You need to run Benchop first, call benchop/run_all.\n"
+        return "You need to run Benchop first, call benchop/run_all or benchop/run?prolem=...\n"
 
     # check for any fails
     for result in results:
@@ -72,12 +72,13 @@ def benchop_run():
         return "Failed to process request. Did you forget to specify a problem via '?problem=...'.\n"
 
     print("problem: {}".format(problem))
-    result = ""
+
+    global results
     try:
-        result = tasks.problem.delay(problem).get(timeout=60)
-    except:
-        result = "Problem {} took to long to run.\n".format(problem)
-    return result
+        results.append(tasks.problem.delay(problem))
+    except Exception as e:
+        return "Exception [{}]".format(e)
+    return "Running problem {}, call benchop/status to get results\n".format(problem)
 
 
 @app.route('/benchop/ls', methods=['GET'])
