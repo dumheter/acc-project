@@ -1,10 +1,10 @@
 #!/bin/bash
-This command is to run one worker which spawns 8 parallel child processes
+#This command is to run one worker which spawns 8 parallel child processes
 cd REST
 celery -A tasks worker --concurrency=8 --loglevel=info
 
-To run multiple workers:
-cd REST
-celery -A tasks worker --concurrency=1 --loglevel=info -n wkr1@yuvi-grp7-benchop #this one runs one worker with name wkr1@yuvi-grp7-benchop and spawns 1 child process
-celery -A tasks worker --concurrency=2 --loglevel=info -n wkr2@yuvi-grp7-benchop #one worker wkr2@yuvi-grp7-benchop runs in sync with wkr1@yuvi-grp7-benchop and spawns 2 parallel child processes
+#To run multiple workers:
+#cd REST
+#celery -A tasks worker --concurrency=1 --loglevel=info -n wkr1@yuvi-grp7-benchop #this one runs one worker with name wkr1@yuvi-grp7-benchop and spawns 1 child process
+#celery -A tasks worker --concurrency=2 --loglevel=info -n wkr2@yuvi-grp7-benchop #one worker wkr2@yuvi-grp7-benchop runs in sync with wkr1@yuvi-grp7-benchop and spawns 2 parallel child processes
 
