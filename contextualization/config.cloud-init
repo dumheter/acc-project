@@ -8,4 +8,8 @@ runcmd:
  - sudo apt install -y rabbitmq-server python3-pip octave emacs
  - pip3 install celery
  - pip3 install flask
- - git clone https://github.com/dumheter/acc-project
+ - git clone https://github.com/dumheter/acc-project /home/ubuntu/acc-project
+ - chown ubuntu:ubuntu -R /home/ubuntu/acc-project
+ - rabbitmqctl add_user super super
+ - rabbitmqctl sed_user_permissions -p super super ".*" ".*" ".*"
+ - service rabbitmq-server restart
