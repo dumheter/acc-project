@@ -4,8 +4,7 @@ c=$(nproc)
 if [ $# -gt 0 ]; then
 	c=$1
 fi
-echo $c
-#celery -A tasks worker --concurrency=$c --loglevel=info
+celery -A tasks worker --concurrency=$c --loglevel=info
 
 #To run multiple workers:
 #cd REST
