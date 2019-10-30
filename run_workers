@@ -1,7 +1,11 @@
 #!/bin/bash
-#This command is to run one worker which spawns 8 parallel child processes
 cd REST
-celery -A tasks worker --concurrency=8 --loglevel=info
+c=$(nproc)
+if [ $# -gt 0 ]; then
+	c=$1
+fi
+echo $c
+#celery -A tasks worker --concurrency=$c --loglevel=info
 
 #To run multiple workers:
 #cd REST
